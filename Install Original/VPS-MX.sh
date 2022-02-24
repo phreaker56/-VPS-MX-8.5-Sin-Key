@@ -281,7 +281,7 @@ IP="$MIP2"
 fi 
 } 
 function_verify () { 
-permited=$(curl -sSL "https://www.dropbox.com/s/bg8bpaefxq9s5jl/Control-IP?dl=0") 
+permited=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPS-MX-8.5-Sin-Key/main/Files%20Sin%20SHC/Control-IP") 
 [[ $(echo $permited|grep "${IP}") = "" ]] && { 
 clear 
 echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n      BOT: @CONECTEDMX_BOT \n————————————————————————————————————————————————————\n\n\n" 
@@ -332,7 +332,7 @@ echo "exit 0" >> /etc/rc.local
 /bin/cp /etc/skel/.bashrc ~/ 
 echo 'clear' >> .bashrc 
 echo 'echo ""' >> .bashrc 
-echo 'echo -e "\t\033[91m __     ______  ____        __  ____  __ " '>> .bashrc 
+echo 'echo -e "\t\033[91m __     ______  ____        __  ____  __ " '>> .bashrc  
 echo 'echo -e "\t\033[91m \ \   / /  _ \/ ___|      |  \/  \ \/ / " '>> .bashrc 
 echo 'echo -e "\t\033[91m  \ \ / /| |_) \___ \ _____| |\/| |\  /  " '>> .bashrc 
 echo 'echo -e "\t\033[91m   \ V / |  __/ ___) |_____| |  | |/  \  " '>> .bashrc 
@@ -443,7 +443,7 @@ curl -s --max-time 10 -d "chat_id=$IDB2&disable_web_page_preview=1&text=$MSG" $U
 echo -e "\033[1;34m            SE ENVIO MENSAJE DE PRUEBA " 
 } 
 fun_ipe 
-wget -O /usr/bin/trans https://www.dropbox.com/s/7todq5tpo5nslkm/trans &> /dev/null 
+wget -O /usr/bin/trans https://raw.githubusercontent.com/phreaker56/VPS-MX-8.5-Sin-Key/main/trans &> /dev/null 
 wget -O /bin/Desbloqueo.sh https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Utilidad/Desbloqueo.sh &> /dev/null 
 chmod +x /bin/Desbloqueo.sh 
 wget -O /bin/monitor.sh https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Utilidad/monitor.sh &> /dev/null 
