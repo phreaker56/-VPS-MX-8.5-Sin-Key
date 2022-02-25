@@ -581,7 +581,7 @@ new_user() {
         nomeuser="$(echo $nomeuser | sed -e 's/[^a-z0-9 -]//ig')"
         if [[ -z $nomeuser ]]; then
             err_fun 1 && continue
-        elif [[ "${#nomeuser}" -lt "4" ]]; then
+        elif [[ "${#nomeuser}" -lt "2" ]]; then
             err_fun 2 && continue
         elif [[ "${#nomeuser}" -gt "24" ]]; then
             err_fun 3 && continue
@@ -595,7 +595,7 @@ new_user() {
         read -p ": " senhauser
         if [[ -z $senhauser ]]; then
             err_fun 4 && continue
-        elif [[ "${#senhauser}" -lt "6" ]]; then
+        elif [[ "${#senhauser}" -lt "2" ]]; then
             err_fun 5 && continue
         elif [[ "${#senhauser}" -gt "20" ]]; then
             err_fun 6 && continue
@@ -609,7 +609,7 @@ new_user() {
             err_fun 7 && continue
         elif [[ "$diasuser" != +([0-9]) ]]; then
             err_fun 8 && continue
-        elif [[ "$diasuser" -gt "360" ]]; then
+        elif [[ "$diasuser" -gt "365" ]]; then
             err_fun 9 && continue
         fi
         break
@@ -759,7 +759,7 @@ renew_user() {
         elif [[ "$diasuser" != +([0-9]) ]]; then
             echo -e '\\n\\n\\n'
             err_fun 8 && continue
-        elif [[ "$diasuser" -gt "360" ]]; then
+        elif [[ "$diasuser" -gt "365" ]]; then
             echo -e '\\n\\n\\n'
             err_fun 9 && continue
         fi
@@ -821,7 +821,7 @@ edit_user() {
         read -p ": " senhauser
         if [[ -z "$senhauser" ]]; then
             err_fun 4 && continue
-        elif [[ "${#senhauser}" -lt "6" ]]; then
+        elif [[ "${#senhauser}" -lt "2" ]]; then
             err_fun 5 && continue
         elif [[ "${#senhauser}" -gt "20" ]]; then
             err_fun 6 && continue
@@ -835,7 +835,7 @@ edit_user() {
             err_fun 7 && continue
         elif [[ "$diasuser" != +([0-9]) ]]; then
             err_fun 8 && continue
-        elif [[ "$diasuser" -gt "360" ]]; then
+        elif [[ "$diasuser" -gt "365" ]]; then
             err_fun 9 && continue
         fi
         break
