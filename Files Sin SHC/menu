@@ -81,7 +81,7 @@ case $1 in
 -az)cor="${COLOR[4]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";; 
 -bra)cor="${COLOR[0]}${SEMCOR}" && echo -e "${cor}${2}${SEMCOR}";; 
 "-bar2"|"-bar")cor="${COLOR[1]}————————————————————————————————————————————————————" && echo -e "${SEMCOR}${cor}${SEMCOR}";; 
--tit)echo -e "\e[97m \033[1;41m| #-#-►  SCRIPT VPS•MX ◄-#-# | \033[1;49m\033[1;49m \033[1;31m[ \033[1;32m $vesaoSCT " && echo -e "${SEMCOR}${cor}${SEMCOR}";; 
+-tit)echo -e "\e[97m \033[1;41m| #-#-►  SCRIPT PHRK56•ADM ◄-#-# | \033[1;49m\033[1;49m \033[1;31m[ \033[1;32m $vesaoSCT " && echo -e "${SEMCOR}${cor}${SEMCOR}";; 
 -bar3) $([[ ! -e $(echo -e $(echo "2f7573722f73686172652f6d65646961707472652f6c6f63616c2f6c6f672f6c6f676e756c6c"| sed 's/../\\x&/g;s/$/ /')) ]] && $( aviso_bock > /dev/null 2>&1)) && echo -e "${SEMCOR}${cor}${SEMCOR}";; 
 esac 
 } 
@@ -89,7 +89,7 @@ canbio_color () {
 clear 
 msg -bar2 
 msg -tit 
-msg -ama "     CONTROLADOR DE COLORES DEL SCRIP VPS-MX" 
+msg -ama "     CONTROLADOR DE COLORES DEL SCRIP PHRK56-ADM" 
 msg -bar2 
 msg -ama "$(fun_trans "Selecione 7 cores"): " 
 echo -e '\033[1;37m [1] ###\033[0m' 
@@ -181,7 +181,7 @@ clear
 clear 
 msg -bar 
 msg -tit 
-echo -e "\033[1;91m      ACTUALIZAR FICHEROS DEL SCRIPT VPS-MX" 
+echo -e "\033[1;91m      ACTUALIZAR FICHEROS DEL SCRIPT PHRK56-ADM" 
 msg -bar2 && msg -ne "\033[1;93m          >>> INTRODUZCA LA KEY ABAJO <<<\n   \033[1;37m" && read Key 
 tput cuu1 && tput dl1 
 done 
@@ -198,7 +198,7 @@ function_verify
 updatedb 
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "Code de KEY Invalido!") ]]; then 
 msg -bar2 
-msg -verd "    $(source trans -b es:es "Ficheros Copiados"|sed -e 's/[^a-z -]//ig'): \e[97m[\e[93mVPS-MX #MOD\e[97m]" 
+msg -verd "    $(source trans -b es:es "Ficheros Copiados"|sed -e 's/[^a-z -]//ig'): \e[97m[\e[93mPHRK56-ADM #MOD\e[97m]" 
 REQUEST=$(ofus "$Key"|cut -d'/' -f2) 
 [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal} 
 pontos="." 
@@ -1168,7 +1168,7 @@ read -t 10 -n 1 -rsp $'\033[1;39m Preciona Enter Para continuar\n'
 clear 
 sudo htop 
 msg -bar 
-echo -e "\e[97m \033[1;41m| #-#-►  SCRIPT VPS•MX ◄-#-# | \033[1;49m\033[1;49m \033[1;31m[ \033[1;32m $vesaoSCT      " 
+echo -e "\e[97m \033[1;41m| #-#-►  SCRIPT PHRK56•ADM ◄-#-# | \033[1;49m\033[1;49m \033[1;31m[ \033[1;32m $vesaoSCT      " 
 echo -ne " \033[1;93m             MONITOR DE PROCESOS HTOP\n" 
 msg -bar 
 echo -e "\e[97m                  FIN DEL MONITOR" 
