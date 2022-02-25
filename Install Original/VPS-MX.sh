@@ -312,7 +312,7 @@ msg -ama "               Finalizando Instalacion" && msg bar2
 touch /usr/share/lognull &>/dev/null 
 wget https://raw.githubusercontent.com/phreaker56/VPSMX/master/SR/SPR &>/dev/null -O /usr/bin/SPR &>/dev/null 
 chmod 775 /usr/bin/SPR &>/dev/null 
-wget -O /usr/bin/SOPORTE https://www.dropbox.com/s/dz1onkls1685hc2/soporte &>/dev/null 
+wget -O /usr/bin/SOPORTE https://raw.githubusercontent.com/phreaker56/VPS-MX-8.5-Sin-Key/main/Archivos%20Utilitarios/soporte.sh &>/dev/null 
 chmod 775 /usr/bin/SOPORTE &>/dev/null 
 SOPORTE &>/dev/null 
 wget -O /bin/rebootnb https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Utilidad/rebootnb &> /dev/null 
