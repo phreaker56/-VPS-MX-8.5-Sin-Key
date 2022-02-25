@@ -223,7 +223,7 @@ rm -rf /root/lista-arq
 [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "es" > ${SCPidioma} 
 echo -e "${cor[2]}               ACTUALIZACION COMPLETA " 
 echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL " 
-echo -e "  \033[1;41m               sudo VPSMX o menu             \033[0;37m" && msg -bar2 
+echo -e "  \033[1;41m                  ADM o menu             \033[0;37m" && msg -bar2 
 rm -rf $HOME/lista-arq 
 else 
 invalid_key 
@@ -437,7 +437,7 @@ msg -bar
 msg -tit 
 msg -ama "          ¿ DESEA DESINSTALAR SCRIPT ?" 
 msg -bar 
-echo -e " Esto borrara todos los archivos del scrip VPS_MX" 
+echo -e " Esto borrara todos los archivos del scrip PHRK56_ADM" 
 msg -bar 
 while [[ ${yesno} != @(s|S|y|Y|n|N) ]]; do 
 read -p " [S/N]: " yesno 
@@ -680,7 +680,7 @@ if [ -e /etc/squid/squid.conf ]; then
 elif [ -e /etc/squid3/squid.conf ]; then 
 [[ `grep -c "^#CACHE_DO_SQUID" /etc/squid3/squid.conf` -gt 0 ]] && squi=$off || squi=$on 
 fi 
-echo -e "??\e[91m\e[43mHERRAMIENTAS BASICOS\e[0m" 
+echo -e "??\e[91m\e[43mHERRAMIENTAS BASICAS\e[0m" 
 msg -bar 
 echo -e "$(msg -verd "[1]")$(msg -verm2 " =>") $(msg -azu "ACTUALIZAR HORA LOCAL")" 
 echo -e "$(msg -verd "[2]")$(msg -verm2 " =>") $(msg -azu "HTOP")" 
