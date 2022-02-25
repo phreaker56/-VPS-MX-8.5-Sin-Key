@@ -223,7 +223,7 @@ rm -rf /root/lista-arq
 [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "es" > ${SCPidioma} 
 echo -e "${cor[2]}               ACTUALIZACION COMPLETA " 
 echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL " 
-echo -e "  \033[1;41m                  ADM o menu             \033[0;37m" && msg -bar2 
+echo -e "  \033[1;41m ADM o menu\033[0;37m" && msg -bar2 
 rm -rf $HOME/lista-arq 
 else 
 invalid_key 
