@@ -39,7 +39,7 @@ echo -ne "  \033[1;33m[\033[1;31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[1;
 sleep 1s 
 } 
 msg -bar2 
-echo -e " \e[97m\033[1;41m   =====>>►►  SCRIPT - VPS•MX ®  ◄◄<<=====      \033[1;37m" 
+echo -e " \e[97m\033[1;41m   =====>>►►  SCRIPT - PHRK56•ADM ®  ◄◄<<=====      \033[1;37m" 
 msg -bar2 
 msg -ama "               PREPARANDO INSTALACION" 
 msg -bar2 
@@ -118,10 +118,10 @@ ln -s /usr/share/zoneinfo/America/Chihuahua /etc/localtime &>/dev/null
 rm -rf /usr/local/lib/systemubu1 &> /dev/null 
 clear 
 msg -bar2 
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m MOD By @ManuVPS \033[1;33m ]" 
+msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m MOD By @Phreakr56 \033[1;33m ]" 
 msg -bar 
 echo -e "\033[97m" 
-echo -e "  \033[41m    -- INSTALACION DE PAQUETES PARA VPS-MX --    \e[49m" 
+echo -e "  \033[41m    -- INSTALACION DE PAQUETES PARA PHRK56-ADM --    \e[49m" 
 echo -e "  \033[100m     PONER ATENCION  PARA SIGUIENTE PREGUNTA     " 
 echo -e "\033[97m" 
 msg -bar 
@@ -213,7 +213,7 @@ idfix64_86 () {
 clear 
 clear 
 msg -bar2 
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m MOD\033[1;33m ]" 
+msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m MOD\033[1;33m ]" 
 msg -bar2 
 echo "" 
 echo -e "\e[91m   INSTALACION SEMI MANUAL DE PAQUETES " 
@@ -236,7 +236,7 @@ clear
 clear 
 clear 
 msg -bar2 
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m  MOD   \033[1;33m ]" 
+msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m  MOD   \033[1;33m ]" 
 msg -bar2 
 echo "" 
 echo -e "\e[91mESCOJER PRIMERO #All locales# Y LUEGO #en_US.UTF-8# \e[0m" 
@@ -254,9 +254,9 @@ clear
 clear 
 clear 
 msg -bar2 
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m  MOD \033[1;33m ]" 
+msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m  MOD \033[1;33m ]" 
 msg -bar2 
-echo -e "\033[1;97m  ¿PRECENTO ALGUN ERROR ALGUN PAQUETE ANTERIOR?" 
+echo -e "\033[1;97m  ¿PRESENTO ALGUN ERROR ALGUN PAQUETE ANTERIOR?" 
 msg -bar2 
 echo -e "\033[1;32m 1- Escoja:(N) No. Para Instalacion Normal" 
 echo -e "\033[1;31m 2- Escoja:(S) Si. Saltaron errores." 
@@ -284,7 +284,7 @@ function_verify () {
 permited=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPS-MX-8.5-Sin-Key/main/Files%20Sin%20SHC/Control-IP") 
 [[ $(echo $permited|grep "${IP}") = "" ]] && { 
 clear 
-echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n      BOT: @CONECTEDMX_BOT \n————————————————————————————————————————————————————\n\n\n" 
+echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n      BOT: @ZEROXLAB_BOT \n————————————————————————————————————————————————————\n\n\n" 
 [[ -d /etc/VPS-MX ]] && rm -rf /etc/VPS-MX 
 exit 1 
 } || { 
@@ -297,7 +297,7 @@ clear
 clear 
 msg -bar2 
 msg -bar2 
-figlet "    -VPS MX-" | lolcat 
+figlet "    -PHRK56 ADM-" | lolcat 
 echo -e "     ESTE SCRIPT ESTA OPTIMIZADO A IDIOMA ESPAÑOL" 
 msg -bar2 
 pv="$(echo es)" 
@@ -343,10 +343,10 @@ echo 'echo "" '>> .bashrc
 echo 'echo -e "\t\033[92mRESELLER : $mess1 "'>> .bashrc 
 echo 'echo -e "\t\e[1;33mVERSION: \e[1;31m$(cat /etc/versin_script_new)"'>> .bashrc 
 echo 'echo "" '>> .bashrc 
-echo 'echo -e "\t\033[97mPARA MOSTAR PANEL BASH ESCRIBA:  PHRK56 o blk "'>> .bashrc 
+echo 'echo -e "\t\033[97mPARA MOSTAR PANEL BASH ESCRIBA:  ADM o menu "'>> .bashrc 
 echo 'echo ""'>> .bashrc 
 echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL " 
-echo -e "  \033[1;41m                PHRK56 o blk             \033[0;37m" && msg -bar2 
+echo -e "  \033[1;41m                ADM o menu             \033[0;37m" && msg -bar2 
 rm -rf /usr/bin/pytransform &> /dev/null 
 rm -rf VPS-MX.sh 
 rm -rf lista-arq 
@@ -406,7 +406,7 @@ NOTIFY () {
 clear 
 clear 
 msg -bar 
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m MOD \033[1;33m ]" 
+msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m MOD \033[1;33m ]" 
 msg -bar 
 msg -ama " Notify-BOT (Notificasion Remota)|@LaCasitaMx_Noty_Bot " 
 msg -bar 
@@ -452,7 +452,7 @@ wget -O /var/www/html/estilos.css https://raw.githubusercontent.com/phreaker56/V
 [[ -f "/usr/sbin/ufw" ]] && ufw allow 443/tcp ; ufw allow 80/tcp ; ufw allow 3128/tcp ; ufw allow 8799/tcp ; ufw allow 8080/tcp ; ufw allow 81/tcp &>/dev/null 
 clear 
 msg -bar2 
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m  MOD  \033[1;33m ]" 
+msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m  MOD  \033[1;33m ]" 
 msg -ama "  \033[1;96m      🔰Usar Ubuntu 20 a 64 De Preferencia🔰 " 
 msg -bar2 
 [[ $1 = "" ]] && funcao_idioma || { 
@@ -486,7 +486,7 @@ function_verify
 updatedb 
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "Code de KEY Invalido!") ]]; then 
 msg -bar2 
-msg -verd "    $(source trans -b es:${id} "Ficheros Copiados"|sed -e 's/[^a-z -]//ig'): \e[97m[\e[93mVPS-MX #@conectedmx_bot\e[97m]" 
+msg -verd "    $(source trans -b es:${id} "Ficheros Copiados"|sed -e 's/[^a-z -]//ig'): \e[97m[\e[93mPHRK56-ADM #@ZEROXLAB_bot\e[97m]" 
 REQUEST=$(ofus "$Key"|cut -d'/' -f2) 
 [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal} 
 pontos="." 
