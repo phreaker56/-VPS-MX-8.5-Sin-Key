@@ -13,14 +13,14 @@ IP="$MIP2"
 fi
 }
 function_verify () {
-permited=$(curl -sSL "https://www.dropbox.com/s/nmau2w8vebewpq3/control-IP")
+permited=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPS-MX-8.5-Sin-Key/main/Files%20Sin%20SHC/Control-IP")
 [[ $(echo $permited|grep "${IP}") = "" ]] && {
 clear
 echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n    \n————————————————————————————————————————————————————\n\n\n"
 [[ -d /etc/VPS-MX ]] && rm -rf /etc/VPS-MX
 exit 1
 } || {
-v1=$(curl -sSL "https://raw.githubusercontent.com/lacasitamx/VPSMX/master/SCRIPT-8.4/Vercion")
+v1=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Vercion")
 echo "$v1" > /etc/versin_script
 }
 }
@@ -38,10 +38,10 @@ echo -e "\033[0;37m BIENVENIDO A SOPORTE ONLINE (APLICANDO FIX's)"
 [[ ! -d /usr/local/protec ]] && mkdir /usr/local/protec
 [[ ! -d /usr/local/protec/rip ]] && mkdir /usr/local/protec/rip
 [[ ! -d /etc/protecbin ]] && mkdir /etc/protecbin
-rm -rf /etc/VPS-MX/herramientas/speed.sh
+rm -rf /etc/VPS-MX/herramientas/speed.py
 rm -rf /etc/VPS-MX/herramientas/speedtest.py
 cd /etc/VPS-MX/herramientas
-wget https://raw.githubusercontent.com/lacasitamx/VPSMX/master/code/speedtest_v1.tar >/dev/null 2>&1
+wget https://raw.githubusercontent.com/phreaker56/VPSMX/master/code/speedtest_v1.tar >/dev/null 2>&1
 tar -xf speedtest_v1.tar > /dev/null 2>&1
 rm -rf speedtest_v1.tar > /dev/null 2>&1
 cd
