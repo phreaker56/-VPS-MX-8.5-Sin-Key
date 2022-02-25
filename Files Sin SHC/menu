@@ -633,23 +633,23 @@ msg -bar
 echo -ne " ►\e[1;37m Selecione Una Opcion: \e[33m " && read select 
 case $select in 
 0) ;; 
-1) ${SCPinst}/budp.sh && msg -ne "Enter Para Continuar" && read enter 
+1) ${SCPinst}/budp.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;; 
-2) ${SCPinst}/proxy.sh && msg -ne "Enter Para Continuar" && read enter 
+2) ${SCPinst}/proxy.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;; 
-3) ${SCPinst}/sockspy.sh && msg -ne "Enter Para Continuar" && read enter 
+3) ${SCPinst}/sockspy.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;; 
-4) ${SCPinst}/v2ray.sh && msg -ne "Enter Para Continuar" && read enter 
+4) ${SCPinst}/v2ray.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;; 
-5) ${SCPinst}/ssl.sh && msg -ne "Enter Para Continuar" && read enter 
+5) ${SCPinst}/ssl.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;; 
-6) ${SCPinst}/dropbear.sh && msg -ne "Enter Para Continuar" && read enter 
+6) ${SCPinst}/dropbear.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;; 
-7) ${SCPinst}/squid.sh && msg -ne "Enter Para Continuar" && read enter 
+7) ${SCPinst}/squid.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;; 
-8) ${SCPinst}/openvpn.sh && msg -ne "Enter Para Continuar" && read enter 
+8) ${SCPinst}/openvpn.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;; 
-9) ${SCPinst}/slowdns.sh && msg -ne "Enter Para Continuar" && read enter 
+9) ${SCPinst}/slowdns.sh && msg -ne "Enter Para Continuar" && read enter
 menu3 ;; 
 10) ${SCPfrm}/ADMbot.sh;; 
 11) ${SCPfrm}/apacheon.sh;; 
