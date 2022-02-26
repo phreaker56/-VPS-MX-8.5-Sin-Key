@@ -106,7 +106,7 @@ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1 > /dev/null 2>&1
 sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1 > /dev/null 2>&1 
 rm $(pwd)/$0 &> /dev/null 
 SCPdir="/etc/VPS-MX" 
-SCPinstal="$HOME/install" 
+SCPinstal="$HOME/instal" 
 SCPidioma="${SCPdir}/idioma" 
 SCPusr="${SCPdir}/controlador" 
 SCPfrm="${SCPdir}/herramientas" 
@@ -503,8 +503,8 @@ listaarqs="$(locate "lista-arq"|head -1)" && [[ -e ${listaarqs} ]] && rm $listaa
 cat /etc/bash.bashrc|grep -v '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' > /etc/bash.bashrc.2 
 echo -e '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' >> /etc/bash.bashrc.2 
 mv -f /etc/bash.bashrc.2 /etc/bash.bashrc 
-echo "${SCPdir}/menu" > /usr/bin/menu && chmod +x /usr/bin/menu 
-echo "${SCPdir}/menu" > /usr/bin/phrk56 && chmod +x /usr/bin/phrk56 
+echo "${SCPdir}/menu" > /usr/bin/menu && chmod 777 /usr/bin/menu 
+echo "${SCPdir}/menu" > /usr/bin/phrk56 && chmod 777 /usr/bin/phrk56 
 echo "$Key" > ${SCPdir}/key.txt 
 [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal} 
 [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "${id}" > ${SCPidioma} 
