@@ -28,7 +28,6 @@ ram2=$(free -h | grep -i mem | awk {'print $4'})
 ram3=$(free -h | grep -i mem | awk {'print $3'}) 
 _ram=$(printf ' %-9s' "$(free -h | grep -i mem | awk {'print $2'})") 
 _usor=$(printf '%-8s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')") 
-dirapache="/usr/local/lib/ubuntn/apache/ver" && [[ ! -d ${dirapache} ]] && exit 
 if [[ -e /etc/bash.bashrc-bakup ]]; then AutoRun="\033[1;32m[ON]" 
 elif [[ -e /etc/bash.bashrc ]]; then AutoRun="\033[1;31m[OFF]" 
 fi 
@@ -144,7 +143,7 @@ echo "$v1" > /etc/versin_script_new
 } 
 atualiza_fun () { 
 fun_ip 
-SCPinstal="$HOME/install" 
+SCPinstall="$HOME/install" 
 verificar_arq () { 
 case $1 in 
 "menu"|"message.txt")ARQ="${SCPdir}/";; #Menu 
@@ -163,7 +162,7 @@ case $1 in
 "sockspy.sh"|"PDirect.py"|"PPub.py"|"PPriv.py"|"POpen.py"|"PGet.py"|"python.py")ARQ="${SCPinst}/";; #Instalacao 
 *)ARQ="${SCPfrm}/";; #Herramientas 
 esac 
-mv -f ${SCPinstal}/$1 ${ARQ}/$1 
+mv -f ${SCPinstall}/$1 ${ARQ}/$1 
 chmod +x ${ARQ}/$1 
 } 
 error_fun () { 
@@ -215,8 +214,8 @@ listaarqs="$(locate "lista-arq"|head -1)" && [[ -e ${listaarqs} ]] && rm $listaa
 cat /etc/bash.bashrc|grep -v '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' > /etc/bash.bashrc.2 
 echo -e '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' >> /etc/bash.bashrc.2 
 mv -f /etc/bash.bashrc.2 /etc/bash.bashrc 
-echo "/etc/VPS-MX/menu" >/usr/bin/menu && chmod +x /usr/bin/menu 
-echo "/etc/VPS-MX/menu" >/usr/bin/phrk56 && chmod +x /usr/bin/phrk56
+echo "${SCPdir}/menu" > /usr/bin/menu && chmod 777 /usr/bin/menu 
+echo "${SCPdir}/menu" > /usr/bin/phrk56 && chmod 777 /usr/bin/phrk56
 echo "$Key" > ${SCPdir}/key.txt 
 [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal} 
 rm -rf /root/lista-arq 
