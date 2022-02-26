@@ -1176,7 +1176,7 @@ msg -bar
 } 
 [[ $(ps x | grep v2ray | grep -v grep | awk '{print $1}') ]] && vra=$on || vra=$off 
 msg -bar 
-msg -bar3 
+
 on="\e[1;32m[ON]" && off="\e[1;31m[OFF]" 
 menu_func "ADMINISTRAR CUENTAS | SSH/SSL/DROPBEAR" "ADMINISTRAR CUENTAS | SS/SSRR" "ADMINISTRAR CUENTAS | V2RAY --> $vra"   "\033[1;100mPROTOCOLOS\e[0m|\e[1;37m\e[41mHERRAMIENTAS" "CAMBIAR COLORES DEL PANEL" "MONITOR DE PROTOCOLOS --------> ${monitorservi}" " AUTO INICIAR SCRIPT ----------> $AutoRun " 
 msg -bar 
