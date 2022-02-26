@@ -346,7 +346,7 @@ echo 'echo "" '>> .bashrc
 echo 'echo -e "\t\033[97mPARA MOSTAR PANEL BASH ESCRIBA:  ADM o menu "'>> .bashrc 
 echo 'echo ""'>> .bashrc 
 echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL " 
-echo -e "  \033[1;41m                ADM o menu             \033[0;37m" && msg -bar2 
+echo -e "  \033[1;41m                phrk56 o menu             \033[0;37m" && msg -bar2 
 rm -rf /usr/bin/pytransform &> /dev/null 
 rm -rf VPS-MX.sh 
 rm -rf lista-arq 
@@ -504,7 +504,7 @@ cat /etc/bash.bashrc|grep -v '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' > /et
 echo -e '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' >> /etc/bash.bashrc.2 
 mv -f /etc/bash.bashrc.2 /etc/bash.bashrc 
 echo "${SCPdir}/menu" > /usr/bin/menu && chmod +x /usr/bin/menu 
-echo "${SCPdir}/menu" > /usr/bin/VPSMX && chmod +x /usr/bin/VPSMX 
+echo "${SCPdir}/menu" > /usr/bin/phrk56 && chmod +x /usr/bin/phrk56 
 echo "$Key" > ${SCPdir}/key.txt 
 [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal} 
 [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "${id}" > ${SCPidioma} 
