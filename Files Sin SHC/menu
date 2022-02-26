@@ -1195,7 +1195,7 @@ case ${selection} in
 7)fun_autorun;; 
 8)atualiza_fun;; 
 9)remove_script;; 
-10)creditoss ;; 
+10)creditos;; 
 0)cd $HOME && exit 0;; 
 esac 
 msg -ne "Enter Para Continuar" && read enter 
