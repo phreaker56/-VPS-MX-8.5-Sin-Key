@@ -343,7 +343,7 @@ echo 'echo "" '>> .bashrc
 echo 'echo -e "\t\033[92mRESELLER : $mess1 "'>> .bashrc 
 echo 'echo -e "\t\e[1;33mVERSION: \e[1;31m$(cat /etc/versin_script_new)"'>> .bashrc 
 echo 'echo "" '>> .bashrc 
-echo 'echo -e "\t\033[97mPARA MOSTAR PANEL BASH ESCRIBA:  ADM o menu "'>> .bashrc 
+echo 'echo -e "\t\033[97mPARA MOSTAR PANEL BASH ESCRIBA:  phrk56 o menu "'>> .bashrc 
 echo 'echo ""'>> .bashrc 
 echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL " 
 echo -e "  \033[1;41m                phrk56 o menu             \033[0;37m" && msg -bar2 
