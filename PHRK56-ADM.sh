@@ -1,116 +1,61 @@
 #!/bin/bash
-if [ `whoami` != 'root' ] 
-then 
-echo -e "\e[1;31mPARA PODER USAR EL INSTALADOR ES NECESARIO SER ROOT\nAUN NO SABES COMO INICAR COMO ROOT?\nDIJITA ESTE COMANDO EN TU TERMINAL ( sudo -i )\e[0m" 
-rm * 
-exit 
-fi 
-msg () { 
-BRAN='\033[1;37m' && VERMELHO='\e[31m' && VERDE='\e[32m' && AMARELO='\e[33m' 
-AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCOR='\e[0m' 
-case $1 in 
--ne)cor="${VERMELHO}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";; 
--ama)cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";; 
--verm)cor="${AMARELO}${NEGRITO}[!] ${VERMELHO}" && echo -e "${cor}${2}${SEMCOR}";; 
--azu)cor="${MAG}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";; 
--verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";; 
--bra)cor="${VERMELHO}" && echo -ne "${cor}${2}${SEMCOR}";; 
-"-bar2"|"-bar")cor="${VERMELHO}————————————————————————————————————————————————————" && echo -e "${SEMCOR}${cor}${SEMCOR}";; 
-esac 
+clear && clear
+cd $HOME
+RutaBin="/bin"
+apt install net-tools -y &>/dev/null
+echo "nameserver 1.1.1.1" >/etc/resolv.conf
+echo "nameserver 1.0.0.1" >>/etc/resolv.conf
+myip=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1)
+myint=$(ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}')
+rm -rf /etc/localtime &>/dev/null
+ln -s /usr/share/zoneinfo/America/Mexico_City /etc/localtime &>/dev/null
+rm -rf /usr/local/lib/systemubu1 &>/dev/null
+### COLORES Y BARRA
+msg() {
+  BRAN='\033[1;37m' && VERMELHO='\e[31m' && VERDE='\e[32m' && AMARELO='\e[33m'
+  AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' && NEGRITO='\e[1m' && SEMCOR='\e[0m'
+  case $1 in
+  -ne) cor="${VERMELHO}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}" ;;
+  -ama) cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}" ;;
+  -verm) cor="${AMARELO}${NEGRITO}[!] ${VERMELHO}" && echo -e "${cor}${2}${SEMCOR}" ;;
+  -azu) cor="${MAG}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}" ;;
+  -verd) cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}" ;;
+  -bra) cor="${VERMELHO}" && echo -ne "${cor}${2}${SEMCOR}" ;;
+  "-bar2" | "-bar") cor="${VERMELHO}————————————————————————————————————————————————————" && echo -e "${SEMCOR}${cor}${SEMCOR}" ;;
+  esac
 }
-fun_bar () { 
-comando="$1" 
-_=$( 
-$comando > /dev/null 2>&1 
-) & > /dev/null 
-pid=$! 
-while [[ -d /proc/$pid ]]; do 
-echo -ne "  \033[1;33m[" 
-for((i=0; i<40; i++)); do 
-echo -ne "\033[1;31m>" 
-sleep 0.1 
-done 
-echo -ne "\033[1;33m]" 
-sleep 1s 
-echo 
-tput cuu1 && tput dl1 
-done 
-echo -ne "  \033[1;33m[\033[1;31m>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\033[1;33m] - \033[1;32m OK \033[0m\n" 
-sleep 1s 
+fun_bar() {
+  comando="$1"
+  _=$(
+    $comando >/dev/null 2>&1
+  ) &
+  >/dev/null
+  pid=$!
+  while [[ -d /proc/$pid ]]; do
+    echo -ne " \033[1;33m["
+    for ((i = 0; i < 20; i++)); do
+      echo -ne "\033[1;31m##"
+      sleep 0.5
+    done
+    echo -ne "\033[1;33m]"
+    sleep 1s
+    echo
+    tput cuu1
+    tput dl1
+  done
+  echo -e " \033[1;33m[\033[1;31m########################################\033[1;33m] - \033[1;32m100%\033[0m"
+  sleep 1s
 }
-msg -bar2 
-echo -e " \e[97m\033[1;41m   =====>>►►  SCRIPT - PHRK56•ADM ®  ◄◄<<=====      \033[1;37m" 
-msg -bar2 
-msg -ama "               PREPARANDO INSTALACION" 
-msg -bar2 
-INSTALL_DIR_PARENT="/usr/local/vpsmxup/" 
-INSTALL_DIR=${INSTALL_DIR_PARENT} 
-if [ ! -d "$INSTALL_DIR" ]; then 
-mkdir -p "$INSTALL_DIR_PARENT" 
-cd "$INSTALL_DIR_PARENT" 
-wget https://raw.githubusercontent.com/phreaker56/VPSMX/master/zzupdate/zzupdate.default.conf -O /usr/local/vpsmxup/vpsmxup.default.conf  &> /dev/null 
-else 
-echo "" 
-fi 
-echo "" 
-apt install pv -y -qq --silent > /dev/null 2>&1 
-killall apt apt-get > /dev/null 2>&1 && echo -e "\033[97m    ◽? INTENTANDO DETENER UPDATER SECUNDARIO " | pv -qL 40 
-dpkg --configure -a > /dev/null 2>&1 && echo -e "\033[97m    ◽? INTENTANDO RECONFIGURAR UPDATER " | pv -qL 40 
-apt list --upgradable &>/dev/null 
-apt-get install software-properties-common -y > /dev/null 2>&1 && echo -e "\033[97m    ◽ INSTALANDO S-P-C " | pv -qL 50 
-apt-get install curl -y &>/dev/null 
-sudo apt-add-repository universe -y > /dev/null 2>&1 && echo -e "\033[97m    ◽? INSTALANDO LIBRERIA UNIVERSAL " | pv -qL 50 
-[[ $(dpkg --get-selections|grep -w "net-tools"|head -1) ]] || apt-get install net-tools -y &>/dev/null && echo -e "\033[97m    ◽? INSTALANDO NET-TOOLS" | pv -qL 40 
-sed -i 's/.*pam_cracklib.so.*/password sufficient pam_unix.so sha512 shadow nullok try_first_pass #use_authtok/' /etc/pam.d/common-password > /dev/null 2>&1 && echo -e "\033[97m    ◽? DESACTIVANDO PASS ALFANUMERICO " | pv -qL 50 
-service ssh restart > /dev/null 2>&1 && echo -e "\033[97m    ◽? REINICIANDO SERVICIO SSH RESTART" | pv -qL 60 
-rootvps(){ 
-echo -e "\033[31m     OPTENIENDO ACCESO ROOT    " 
-wget https://raw.githubusercontent.com/phreaker56/VPSMX/blob/master/SR/root.sh &>/dev/null -O /usr/bin/rootlx &>/dev/null 
-chmod 775 /usr/bin/rootlx &>/dev/null 
-rootlx 
-clear 
-echo -e "\033[31m     ACCESO ROOT CON ÉXITO    " 
-sleep 1 
-} 
-msg -bar 
-echo -e "\033[1;37m  YA TIENES ACCESO ROOT A TU VPS?\n  ESTO SOLO FUNCIONA PARA (AWS,GOOGLECLOUD,AZURE,ETC)\n  SI YA TIENES ACCESO A ROOT SOLO IGNORA ESTE MENSAJE\n  Y SIGUE CON LA INSTALACION NORMAL..." 
-msg -bar 
-read -p "Responde [ s | n ]: " -e -i n rootvps 
-[[ "$rootvps" = "s" || "$rootvps" = "S" ]] && rootvps 
-msg -bar
-clear
-rm -rf /usr/bin/vpsmxup 
-rm -rf lista-arq 
-rm -rf VPS-MX.sh 
-function printTitle 
-{ 
-echo "" 
-echo -e "\033[1;92m$1\033[1;91m" 
-printf '%0.s-' $(seq 1 ${#1}) 
-echo "" 
-} 
-printTitle "Limpieza de caché local" 
-apt-get clean 
-printTitle "Actualizar información de paquetes disponibles" 
-apt-get update 
-printTitle "PAQUETES DE ACTUALIZACIÓN" 
-apt-get dist-upgrade -y 
-printTitle "Limpieza de paquetes (eliminación automática de paquetes no utilizados)" 
-apt-get autoremove -y 
-printTitle "Versión actual" 
-lsb_release -d 
-clear
 install_paketes() {
   clear && clear
   ### PAQUETES PRINCIPALES
-  msg -bar2 
-msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m MOD By @Phreakr56 \033[1;33m ]" 
-msg -bar 
-echo -e "\033[97m" 
-echo -e "  \033[41m    -- INSTALACION DE PAQUETES PARA PHRK56-ADM --    \e[49m" 
-echo -e "  \033[100m     PONER ATENCION  PARA SIGUIENTE PREGUNTA     " 
-echo -e "\033[97m"
-msg -bar
+  msg -bar2
+  msg -ama "  [ SCRIPT-FREE  \033[1;97m ❌ MOD By @Kalix1 ❌\033[1;33m ]"
+  msg -bar
+  echo -e "\033[97m"
+  echo -e "  \033[41m    -- INSTALACION DE PAQUETES PARA VPS-MX --    \e[49m"
+  echo -e "\033[97m"
+  msg -bar
   #grep
   apt-get install netcat -y &>/dev/null
   apt-get install netpipes -y &>/dev/null
@@ -218,25 +163,18 @@ msg -bar
   [[ $(dpkg --get-selections | grep -w "apache2" | head -1) ]] || ESTATUS=$(echo -e "\033[91mFALLO DE INSTALACION") &>/dev/null
   [[ $(dpkg --get-selections | grep -w "apache2" | head -1) ]] && ESTATUS=$(echo -e "\033[92mINSTALADO") &>/dev/null
   echo -e "\033[97m    # apt-get install apache2......... $ESTATUS "
-  msg -bar2 
-clear
+
+}
+
+install_paketes
+mkdir /etc/VPS-MX >/dev/null 2>&1
+
 cd /etc/VPS-MX
-sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1 > /dev/null 2>&1 
-sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1 > /dev/null 2>&1 
-sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1 > /dev/null 2>&1 
-rm $(pwd)/$0 &> /dev/null
-SCPdir="/etc/VPS-MX" 
-SCPinstal="$HOME/install" 
-SCPidioma="${SCPdir}/idioma" 
-SCPusr="${SCPdir}/controlador" 
-SCPfrm="${SCPdir}/herramientas" 
-SCPinst="${SCPdir}/protocolos" 
-myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`; 
-myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`; 
-rm -rf /etc/localtime &>/dev/null 
-ln -s /usr/share/zoneinfo/America/Chihuahua /etc/localtime &>/dev/null 
-rm -rf /usr/local/lib/systemubu1 &> /dev/null 
-clear
+wget https://www.dropbox.com/s/37e71xhn7x0rz44/VPS-MX.tar.xz >/dev/null 2>&1
+tar -xf VPS-MX.tar.xz >/dev/null 2>&1
+chmod +x VPS-MX.tar.xz >/dev/null 2>&1
+rm -rf VPS-MX.tar.xz
+cd
 chmod -R 755 /etc/VPS-MX
 rm -rf /etc/VPS-MX/MEUIPvps
 echo "/etc/VPS-MX/menu" >/usr/bin/menu && chmod +x /usr/bin/menu
@@ -257,7 +195,7 @@ echo "/etc/VPS-MX/menu" >/usr/bin/VPSMX && chmod +x /usr/bin/VPSMX
 rm -rf /etc/VPS-MX/herramientas/speed.sh
 rm -rf /etc/VPS-MX/herramientas/speedtest.py
 cd /etc/VPS-MX/herramientas
-wget https://raw.githubusercontent.com/phreaker56/VPSMX/master/code/speedtest_v1.tar >/dev/null 2>&1
+wget https://raw.githubusercontent.com/lacasitamx/VPSMX/master/code/speedtest_v1.tar >/dev/null 2>&1
 tar -xf speedtest_v1.tar >/dev/null 2>&1
 rm -rf speedtest_v1.tar >/dev/null 2>&1
 cd
@@ -265,149 +203,54 @@ cd
 [[ ! -d /etc/VPS-MX/Slow ]] && mkdir /etc/VPS-MX/Slow
 [[ ! -d /etc/VPS-MX/Slow/install ]] && mkdir /etc/VPS-MX/Slow/install
 [[ ! -d /etc/VPS-MX/Slow/Key ]] && mkdir /etc/VPS-MX/Slow/Key
-clear 
-idfix64_86 () { 
-clear 
-clear 
-msg -bar2 
-msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m MOD\033[1;33m ]" 
-msg -bar2 
-echo "" 
-echo -e "\e[91m   INSTALACION SEMI MANUAL DE PAQUETES " 
-echo -e "\e[91m(En caso de pedir confirmacion escoja: #y#) \e[0m" 
-echo "" 
-sleep 7s 
-apt-get update; apt-get upgrade -y 
-apt-get install curl -y 
-apt-get install lsof -y 
-apt-get install sudo -y 
-apt-get install figlet -y 
-apt-get install cowsay -y 
-apt-get install bc -y 
-apt-get install python -y 
-apt-get install at -y 
-apt-get install apache2 -y 
-sed -i "s;Listen 80;Listen 81;g" /etc/apache2/ports.conf 
-service apache2 restart 
-clear 
-clear 
-clear 
-msg -bar2 
-msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m  MOD   \033[1;33m ]" 
-msg -bar2 
-echo "" 
-echo -e "\e[91mESCOJER PRIMERO #All locales# Y LUEGO #en_US.UTF-8# \e[0m" 
-echo "" 
-sleep 7s 
-export LANGUAGE=en_US.UTF-8\
-&& export LANG=en_US.UTF-8\
-&& export LC_ALL=en_US.UTF-8\
-&& export LC_CTYPE="en_US.UTF-8"\
-&& locale-gen en_US.UTF-8\
-&& sudo apt-get -y install language-pack-en-base\
-&& sudo dpkg-reconfigure locales
-clear
-} 
-clear 
-clear 
-msg -bar2 
-msg -ama "     [ PHRK56 - ADM - SCRIPT \033[1;97m  MOD \033[1;33m ]" 
-msg -bar2 
-echo -e "\033[1;97m  ¿PRESENTO ALGUN ERROR ALGUN PAQUETE ANTERIOR?" 
-msg -bar2 
-echo -e "\033[1;32m 1- Escoja:(N) No. Para Instalacion Normal" 
-echo -e "\033[1;31m 2- Escoja:(S) Si. Saltaron errores." 
-msg -bar2 
-echo -e "\033[1;39m Al preciona enter continuara la instalacion Normal" 
-msg -bar2 
-read -p " [ S | N ]: " idfix64_86 
-[[ "$idfix64_86" = "s" || "$idfix64_86" = "S" ]] && idfix64_86 
-clear 
-fun_ipe () { 
-MIP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1) 
-MIP2=$(wget -qO- ifconfig.me) 
-[[ "$MIP" != "$MIP2" ]] && IP="$MIP2" || IP="$MIP" 
-} 
-fun_ip () { 
-MIP2=$(wget -qO- ifconfig.me) 
-MIP=$(wget -qO- whatismyip.akamai.com) 
-if [ $? -eq 0 ]; then 
-IP="$MIP" 
-else 
-IP="$MIP2" 
-fi 
-}
-function_verify () { 
-permited=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPS-MX-8.5-Sin-Key/main/Files%20Sin%20SHC/Control-IP") 
-[[ $(echo $permited|grep "${IP}") = "" ]] && { 
-clear 
-echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n      BOT: @ZEROXLAB_BOT \n————————————————————————————————————————————————————\n\n\n" 
-[[ -d /etc/VPS-MX ]] && rm -rf /etc/VPS-MX 
-exit 1 
-} || { 
-v1=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Vercion") 
+msg -ama "               Finalizando Instalacion" && msg bar2
+[[ $(find /etc/VPS-MX/controlador -name nombre.log | grep -w "nombre.log" | head -1) ]] || wget -O /etc/VPS-MX/controlador/nombre.log https://github.com/lacasitamx/VPSMX/raw/master/ArchivosUtilitarios/nombre.log &>/dev/null
+[[ $(find /etc/VPS-MX/controlador -name IDT.log | grep -w "IDT.log" | head -1) ]] || wget -O /etc/VPS-MX/controlador/IDT.log https://github.com/lacasitamx/VPSMX/raw/master/ArchivosUtilitarios/IDT.log &>/dev/null
+[[ $(find /etc/VPS-MX/controlador -name tiemlim.log | grep -w "tiemlim.log" | head -1) ]] || wget -O /etc/VPS-MX/controlador/tiemlim.log https://github.com/lacasitamx/VPSMX/raw/master/ArchivosUtilitarios/tiemlim.log &>/dev/null
+touch /usr/share/lognull &>/dev/null
+wget https://raw.githubusercontent.com/lacasitamx/VPSMX/master/SR/SPR -O /usr/bin/SPR &>/dev/null &>/dev/null
+chmod 775 /usr/bin/SPR &>/dev/null
+wget -O /usr/bin/SOPORTE https://www.dropbox.com/s/dz1onkls1685hc2/soporte &>/dev/null
+chmod 775 /usr/bin/SOPORTE &>/dev/null
+SOPORTE &>/dev/null
+wget -O /bin/rebootnb https://raw.githubusercontent.com/lacasitamx/VPSMX/master/SCRIPT-8.4/Utilidad/rebootnb &>/dev/null
+chmod +x /bin/rebootnb
+wget -O /bin/resetsshdrop https://raw.githubusercontent.com/lacasitamx/VPSMX/master/SCRIPT-8.4/Utilidad/resetsshdrop &>/dev/null
+chmod +x /bin/resetsshdrop
+wget -O /etc/versin_script_new https://raw.githubusercontent.com/lacasitamx/VPSMX/master/SCRIPT-8.4/Vercion &>/dev/null
+grep -v "^PasswordAuthentication" /etc/ssh/sshd_config >/tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
+echo "PasswordAuthentication yes" >>/etc/ssh/sshd_config
+v1=$(curl -sSL "https://raw.githubusercontent.com/lacasitamx/VPSMX/master/SCRIPT-8.4/Vercion") 
 echo "$v1" > /etc/versin_script 
-} 
-} 
-funcao_idioma () { 
-clear 
-clear 
-msg -bar2 
-msg -bar2 
-figlet "    -PHRK56 ADM-" | lolcat 
-echo -e "     ESTE SCRIPT ESTA OPTIMIZADO A IDIOMA ESPAÑOL" 
-msg -bar2 
-pv="$(echo es)" 
-[[ ${#id} -gt 2 ]] && id="es" || id="$pv" 
-byinst="true" 
-} 
-install_fim () { 
-msg -ama "               Finalizando Instalacion" && msg bar2 
-[[ $(find /etc/VPS-MX/controlador -name nombre.log|grep -w "nombre.log"|head -1) ]] || wget -O /etc/VPS-MX/controlador/nombre.log https://github.com/phreaker56/VPSMX/blob/master/ArchivosUtilitarios/nombre.log &>/dev/null 
-[[ $(find /etc/VPS-MX/controlador -name IDT.log|grep -w "IDT.log"|head -1) ]] || wget -O /etc/VPS-MX/controlador/IDT.log https://github.com/phreaker56/VPSMX/blob/master/ArchivosUtilitarios/IDT.log &>/dev/null 
-[[ $(find /etc/VPS-MX/controlador -name tiemlim.log|grep -w "tiemlim.log"|head -1) ]] || wget -O /etc/VPS-MX/controlador/tiemlim.log https://github.com/phreaker56/VPSMX/blob/master/ArchivosUtilitarios/tiemlim.log &>/dev/null 
-touch /usr/share/lognull &>/dev/null 
-wget https://raw.githubusercontent.com/phreaker56/VPSMX/master/SR/SPR &>/dev/null -O /usr/bin/SPR &>/dev/null 
-chmod 775 /usr/bin/SPR &>/dev/null 
-wget -O /usr/bin/SOPORTE https://raw.githubusercontent.com/phreaker56/VPS-MX-8.5-Sin-Key/main/Archivos%20Utilitarios/soporte.sh &>/dev/null 
-chmod 775 /usr/bin/SOPORTE &>/dev/null 
-SOPORTE &>/dev/null 
-wget -O /bin/rebootnb https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Utilidad/rebootnb &> /dev/null 
-chmod +x /bin/rebootnb 
-wget -O /bin/resetsshdrop https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Utilidad/resetsshdrop &> /dev/null 
-chmod +x /bin/resetsshdrop 
-wget -O /etc/versin_script_new https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Vercion &>/dev/null 
-grep -v "^PasswordAuthentication" /etc/ssh/sshd_config >/tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config 
-echo "PasswordAuthentication yes" >>/etc/ssh/sshd_config 
-msg -bar2 
-echo '#!/bin/sh -e' > /etc/rc.local 
-sudo chmod +x /etc/rc.local 
-echo "sudo rebootnb" >> /etc/rc.local 
-echo "sudo resetsshdrop" >> /etc/rc.local 
-echo "sleep 2s" >> /etc/rc.local 
-echo "exit 0" >> /etc/rc.local 
-/bin/cp /etc/skel/.bashrc ~/ 
-echo 'clear' >> .bashrc 
-echo 'echo ""' >> .bashrc 
-echo 'echo -e "\t\033[91m     ____   __           __    ______ _____         ___     ____   __  ___ " '>> .bashrc
-echo 'echo -e "\t\033[91m    / __ \ / /_   _____ / /__ / ____// ___/        /   |   / __ \ /  |/  / " '>> .bashrc
-echo 'echo -e "\t\033[91m   / /_/ // __ \ / ___// //_//___ \ / __ \ ______ / /| |  / / / // /|_/ /  " '>> .bashrc
-echo 'echo -e "\t\033[91m  / ____// / / // /   / ,<  ____/ // /_/ //_____// ___ | / /_/ // /  / /   " '>> .bashrc
-echo 'echo -e "\t\033[91m /_/    /_/ /_//_/   /_/|_|/_____/ \____/       /_/  |_|/_____//_/  /_/    " '>> .bashrc
-echo 'echo "" '>> .bashrc 
-echo 'mess1="$(less /etc/VPS-MX/message.txt)" ' >> .bashrc 
-echo 'echo "" '>> .bashrc 
-echo 'echo -e "\t\033[92mRESELLER : $mess1 "'>> .bashrc 
-echo 'echo -e "\t\e[1;33mVERSION: \e[1;31m$(cat /etc/versin_script_new)"'>> .bashrc 
-echo 'echo "" '>> .bashrc 
-echo 'echo -e "\t\033[97mPARA MOSTAR PANEL BASH ESCRIBA:  phrk56 o menu "'>> .bashrc 
-echo 'echo ""'>> .bashrc 
-echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL " 
-echo -e "  \033[1;41m                phrk56 o menu             \033[0;37m" && msg -bar2 
-rm -rf /usr/bin/pytransform &> /dev/null 
-rm -rf VPS-MX.sh 
-rm -rf lista-arq 
-service ssh restart &>/dev/null 
+msg -bar2
+echo '#!/bin/sh -e' >/etc/rc.local
+sudo chmod +x /etc/rc.local
+echo "sudo rebootnb" >>/etc/rc.local
+echo "sudo resetsshdrop" >>/etc/rc.local
+echo "sleep 2s" >>/etc/rc.local
+echo "exit 0" >>/etc/rc.local
+/bin/cp /etc/skel/.bashrc ~/
+echo 'clear' >>.bashrc
+echo 'echo ""' >>.bashrc
+echo 'echo -e "\t\033[91m __     ______  ____        __  ____  __ " ' >>.bashrc
+echo 'echo -e "\t\033[91m \ \   / /  _ \/ ___|      |  \/  \ \/ / " ' >>.bashrc
+echo 'echo -e "\t\033[91m  \ \ / /| |_) \___ \ _____| |\/| |\  /  " ' >>.bashrc
+echo 'echo -e "\t\033[91m   \ V / |  __/ ___) |_____| |  | |/  \  " ' >>.bashrc
+echo 'echo -e "\t\033[91m    \_/  |_|   |____/      |_|  |_/_/\_\ " ' >>.bashrc
+echo 'echo "" ' >>.bashrc
+echo 'mess1="$(less /etc/VPS-MX/message.txt)" ' >>.bashrc
+echo 'echo "" ' >>.bashrc
+echo 'echo -e "\t\033[92mRESELLER : $mess1 "' >>.bashrc
+echo 'echo -e "\t\e[1;33mVERSION: \e[1;31m$(cat /etc/versin_script_new)"' >>.bashrc
+echo 'echo "" ' >>.bashrc
+echo 'echo -e "\t\033[97mPARA MOSTAR PANEL BASH ESCRIBA: sudo VPSMX o menu "' >>.bashrc
+echo 'echo ""' >>.bashrc
+echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL "
+echo -e "  \033[1;41m               sudo VPSMX o menu             \033[0;37m" && msg -bar2
+rm -rf /usr/bin/pytransform &>/dev/null
+rm -rf VPS-MX.sh
+rm -rf lista-arq
+service ssh restart &>/dev/null
 exit 
 } 
 ofus () { 
