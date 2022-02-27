@@ -346,7 +346,7 @@ echo 'echo "" '>> .bashrc
 echo 'echo -e "\t\033[97mPARA MOSTAR PANEL BASH ESCRIBA:  phrk56 o menu "'>> .bashrc 
 echo 'echo ""'>> .bashrc 
 echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL " 
-echo -e "  \033[1;41m                phrk56 o menu             \033[0;37m" && msg -bar2 
+echo -e "  \033[1;41m                sudo phrk56 o adm             \033[0;37m" && msg -bar2 
 rm -rf /usr/bin/pytransform &> /dev/null 
 rm -rf VPS-MX.sh 
 rm -rf lista-arq 
@@ -503,11 +503,20 @@ listaarqs="$(locate "lista-arq"|head -1)" && [[ -e ${listaarqs} ]] && rm $listaa
 cat /etc/bash.bashrc|grep -v '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' > /etc/bash.bashrc.2 
 echo -e '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' >> /etc/bash.bashrc.2 
 mv -f /etc/bash.bashrc.2 /etc/bash.bashrc 
-echo "${SCPdir}/menu" > /usr/bin/menu && chmod 777 /usr/bin/menu 
-echo "${SCPdir}/menu" > /usr/bin/phrk56 && chmod 777 /usr/bin/phrk56 
+echo "${SCPdir}/menu" > /usr/bin/phrk56 && chmod +x /usr/bin/phrk56
+echo "${SCPdir}/menu" > /usr/bin/adm && chmod +x /usr/bin/adm 
 echo "$Key" > ${SCPdir}/key.txt 
-[[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal} 
-[[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "${id}" > ${SCPidioma} 
+[[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}
+rm -rf /root/lista-arq
+[[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "es" > ${SCPidioma}
+echo -e "${cor[2]}               ACTUALIZACION COMPLETA " 
+echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL " 
+echo -e "  \033[1;41m phrk56 o menu\033[0;37m" && msg -bar2 
+rm -rf $HOME/lista-arq 
+else 
+invalid_key 
+fi 
+exit 1 
 echo -e "${cor[2]}         DESEAS INSTALAR NOTI-BOT?(Default n)" 
 echo -e "\033[1;34m  (Deves tener Telegram y el BOT: @LaCasitaMx_Noty_Bot)" 
 msg -bar2 
