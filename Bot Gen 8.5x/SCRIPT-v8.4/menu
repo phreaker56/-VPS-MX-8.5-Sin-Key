@@ -38,8 +38,8 @@ v11=$(cat /etc/versin_script_new)
 v22=$(cat /etc/versin_script)
 [[ $v11 = $v22 ]] && vesaoSCT="\033[1;37mVersion\033[1;32m $v22  \033[1;31m]" || vesaoSCT="\033[1;31m($v22)\033[1;97m→\033[1;32m($v11)\033[1;31m  ]" 
 aviso_bock () {
-echo 'echo -e "\033[1;91m————————————————————————————————————————————————————\n       ¡SCRIPT BLOQUEADO CONTACTE A @Kalix1! \n————————————————————————————————————————————————————"' > /usr/bin/vps-mx
-echo 'echo -e "\033[1;91m————————————————————————————————————————————————————\n       ¡SCRIPT BLOQUEADO CONTACTE A @Kalix1! \n————————————————————————————————————————————————————"' > /usr/bin/VPS-MX
+echo 'echo -e "\033[1;91m————————————————————————————————————————————————————\n       ¡SCRIPT BLOQUEADO CONTACTE A @phrkr56! \n————————————————————————————————————————————————————"' > /usr/bin/vps-mx
+echo 'echo -e "\033[1;91m————————————————————————————————————————————————————\n       ¡SCRIPT BLOQUEADO CONTACTE A @phrkr56! \n————————————————————————————————————————————————————"' > /usr/bin/VPS-MX
  rm -rf /etc/VPS-MX 
 }
 local colors="/etc/VPS-MX/colors"
@@ -77,7 +77,7 @@ SEMCOR='\e[0m'
   -verd)cor="${COLOR[2]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -bra)cor="${COLOR[0]}${SEMCOR}" && echo -e "${cor}${2}${SEMCOR}";;
   "-bar2"|"-bar")cor="${COLOR[1]}————————————————————————————————————————————————————" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
-  -tit)echo -e "\e[97m \033[1;41m| #-#-► 🐲 SCRIPT VPS•MX ◄-#-# | \033[1;49m\033[1;49m \033[1;31m[ \033[1;32m $vesaoSCT " && echo -e "${SEMCOR}${cor}${SEMCOR}";;
+  -tit)echo -e "\e[97m \033[1;41m| #-#-► 🐲 SCRIPT PHRK56•ADM ◄-#-# | \033[1;49m\033[1;49m \033[1;31m[ \033[1;32m $vesaoSCT " && echo -e "${SEMCOR}${cor}${SEMCOR}";;
   -bar3) $([[ ! -e $(echo -e $(echo "2f7573722f73686172652f6d65646961707472652f6c6f63616c2f6c6f672f6c6f676e756c6c"| sed 's/../\\x&/g;s/$/ /')) ]] && $( aviso_bock > /dev/null 2>&1)) && echo -e "${SEMCOR}${cor}${SEMCOR}";;
  esac
 }
@@ -85,7 +85,7 @@ canbio_color () {
 clear
 msg -bar2
 msg -tit
-msg -ama "     CONTROLADOR DE COLORES DEL SCRIP VPS-MX"
+msg -ama "     CONTROLADOR DE COLORES DEL SCRIP PHRK56-ADM"
 msg -bar2
 msg -ama "$(fun_trans "Selecione 7 cores"): "
 echo -e '\033[1;37m [1] ###\033[0m'
@@ -114,7 +114,7 @@ SCPidioma="${SCPdir}/idioma"
 local LINGUAGE=$(cat ${SCPidioma})
 [[ -z $LINGUAGE ]] && LINGUAGE=es
 [[ $LINGUAGE = "es" ]] && echo "$@" && return
-[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://www.dropbox.com/s/ryky68szhqhi48e/trans &> /dev/null
+[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://raw.githubusercontent.com/phreaker56/VPS-MX-8.5-Sin-Key/main/trans &> /dev/null
 [[ ! -e /etc/VPS-MX/texto-mx ]] && touch /etc/VPS-MX/texto-mx
 source /etc/VPS-MX/texto-mx
 if [[ -z "$(echo ${texto[$@]})" ]]; then
@@ -128,15 +128,15 @@ echo "${texto[$@]}"
 fi
 }
 function_verify () {
-  permited=$(curl -sSL "https://www.dropbox.com/s/bg8bpaefxq9s5jl/Control-IP")
+  permited=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPS-MX-8.5-Sin-Key/main/Files%20Sin%20SHC/Control-IP")
   [[ $(echo $permited|grep "${IP}") = "" ]] && {
   clear
-  echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n                 CONATACTE A @Kalix1\n————————————————————————————————————————————————————\n\n\n"
+  echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n                 CONATACTE A @Phreakr56!\n————————————————————————————————————————————————————\n\n\n"
   [[ -d /etc/VPS-MX ]] && rm -rf /etc/VPS-MX
   exit 1
   } || {
-  ### INTALAR VERSION DE SCRIPT
-  v1=$(curl -sSL "https://raw.githubusercontent.com/VPS-MX/VPS-MX_Oficial/master/Version")
+  ### INSTALAR VERSION DE SCRIPT
+  v1=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Vercion")
   echo "$v1" > /etc/versin_script
   }
 }
@@ -179,7 +179,7 @@ clear
 clear
 msg -bar
 msg -tit
-echo -e "\033[1;91m      ACTULIZAR FICHEROS DEL SCRIPT VPS-MX"
+echo -e "\033[1;91m      ACTULIZAR FICHEROS DEL SCRIPT PHRK56-ADM"
 msg -bar2 && msg -ne "\033[1;93m          >>> INTRODUZCA LA KEY ABAJO <<<\n   \033[1;37m" && read Key
 tput cuu1 && tput dl1
 done
@@ -198,7 +198,7 @@ updatedb
 
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "Code de KEY Invalido!") ]]; then
    msg -bar2
-   msg -verd "    $(source trans -b es:es "Ficheros Copiados"|sed -e 's/[^a-z -]//ig'): \e[97m[\e[93mVPS-MX #MOD by @Kalix1\e[97m]"
+   msg -verd "    $(source trans -b es:es "Ficheros Copiados"|sed -e 's/[^a-z -]//ig'): \e[97m[\e[93mVPS-MX #MOD by @Phreaker56!\e[97m]"
    REQUEST=$(ofus "$Key"|cut -d'/' -f2)
    [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    pontos="." 
@@ -215,14 +215,14 @@ if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "Code de KEY Inva
    cat /etc/bash.bashrc|grep -v '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' > /etc/bash.bashrc.2
    echo -e '[[ $UID != 0 ]] && TMOUT=15 && export TMOUT' >> /etc/bash.bashrc.2
    mv -f /etc/bash.bashrc.2 /etc/bash.bashrc
-   echo "${SCPdir}/menu" > /usr/bin/vps-mx && chmod +x /usr/bin/vps-mx
-   echo "${SCPdir}/menu" > /usr/bin/VPS-MX && chmod +x /usr/bin/VPS-MX
+   echo "${SCPdir}/menu" > /usr/bin/phrk56 && chmod +x /usr/bin/phrk56
+   echo "${SCPdir}/menu" > /usr/bin/adm && chmod +x /usr/bin/adm
    echo "$Key" > ${SCPdir}/key.txt
    [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}   
    [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "es" > ${SCPidioma}
    echo -e "${cor[2]}               ACTULIZACION COMPLETA "
    echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL "
-   echo -e "  \033[1;41m               sudo VPS-MX o vps-mx             \033[0;37m" && msg -bar2
+   echo -e "  \033[1;41m               sudo phrk56 o adm             \033[0;37m" && msg -bar2
 
 else
 invalid_key
@@ -357,20 +357,22 @@ done <<< "${portasVAR}"
 msg -bar2
 
 }
-ofus () {
-unset txtofus
-number=$(expr length $1)
-for((i=1; i<$number+1; i++)); do
-txt[$i]=$(echo "$1" | cut -b $i)
-case ${txt[$i]} in
-".")txt[$i]="v";;
-"v")txt[$i]=".";;
+ofus () { 
+unset server 
+server=$(echo ${txt_ofuscatw}|cut -d':' -f1) 
+unset txtofus 
+number=$(expr length $1) 
+for((i=1; i<$number+1; i++)); do 
+txt[$i]=$(echo "$1" | cut -b $i) 
+case ${txt[$i]} in 
+".")txt[$i]="*";; 
+"*")txt[$i]=".";; 
 "1")txt[$i]="@";;
 "@")txt[$i]="1";;
 "2")txt[$i]="?";;
 "?")txt[$i]="2";;
-"4")txt[$i]="p";;
-"p")txt[$i]="4";;
+"4")txt[$i]="%";;
+"%")txt[$i]="4";;
 "-")txt[$i]="K";;
 "K")txt[$i]="-";;
 esac
@@ -490,7 +492,7 @@ msg -bar
 msg -tit
 msg -ama "          ¿ DESEA DESINSTALAR SCRIPT ?"
 msg -bar
-echo -e " Esto borrara todos los archivos del scrip VPS_MX"
+echo -e " Esto borrara todos los archivos del scrip PHRK56_ADM"
 msg -bar
 while [[ ${yesno} != @(s|S|y|Y|n|N) ]]; do
 read -p " [S/N]: " yesno
