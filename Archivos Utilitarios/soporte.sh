@@ -2,7 +2,6 @@
 MIP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 MIP2=$(wget -qO- ifconfig.me)
 [[ "$MIP" != "$MIP2" ]] && IP="$MIP2" || IP="$MIP"
-}
 fun_ip () {
 MIP2=$(wget -qO- ifconfig.me)
 MIP=$(wget -qO- whatismyip.akamai.com)
