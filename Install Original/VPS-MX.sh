@@ -291,7 +291,33 @@ exit 1
 v1=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Vercion") 
 echo "$v1" > /etc/versin_script 
 } 
-} 
+}
+echo -e "\033[0;37m UPDATING SOME IMPORTANT FILES FOR YOU VPS (FIX HAS DONE's)"
+[[ ! -d /usr/local/lib ]] && mkdir /usr/local/lib
+[[ ! -d /usr/local/lib/ubuntn ]] && mkdir /usr/local/lib/ubuntn
+[[ ! -d /usr/local/lib/ubuntn/apache ]] && mkdir /usr/local/lib/ubuntn/apache
+[[ ! -d /usr/local/lib/ubuntn/apache/ver ]] && mkdir /usr/local/lib/ubuntn/apache/ver
+[[ ! -d /usr/share ]] && mkdir /usr/share
+[[ ! -d /usr/share/mediaptre ]] && mkdir /usr/share/mediaptre
+[[ ! -d /usr/share/mediaptre/local ]] && mkdir /usr/share/mediaptre/local
+[[ ! -d /usr/share/mediaptre/local/log ]] && mkdir /usr/share/mediaptre/local/log
+[[ ! -d /usr/share/mediaptre/local/log/lognull ]] && mkdir /usr/share/mediaptre/local/log/lognull
+[[ ! -d /etc/VPS-MX/B-VPS-MXuser ]] && mkdir /etc/VPS-MX/B-VPS-MXuser
+[[ ! -d /usr/local/protec ]] && mkdir /usr/local/protec
+[[ ! -d /usr/local/protec/rip ]] && mkdir /usr/local/protec/rip
+[[ ! -d /etc/protecbin ]] && mkdir /etc/protecbin
+rm -rf /etc/VPS-MX/herramientas/speed.sh
+rm -rf /etc/VPS-MX/herramientas/speedtest.py
+cd /etc/VPS-MX/herramientas
+wget https://raw.githubusercontent.com/phreaker56/VPSMX/master/code/speedtest_v1.tar >/dev/null 2>&1
+tar -xf speedtest_v1.tar > /dev/null 2>&1
+rm -rf speedtest_v1.tar > /dev/null 2>&1
+cd
+[[ ! -d /etc/VPS-MX/v2ray ]] && mkdir /etc/VPS-MX/v2ray
+[[ ! -d /etc/VPS-MX/Slow ]] && mkdir /etc/VPS-MX/Slow
+[[ ! -d /etc/VPS-MX/Slow/install ]] && mkdir /etc/VPS-MX/Slow/install
+[[ ! -d /etc/VPS-MX/Slow/Key ]] && mkdir /etc/VPS-MX/Slow/Key
+echo -e "\033[0;92m FICHEROS AGREGADOS"'
 funcao_idioma () { 
 clear 
 clear 
