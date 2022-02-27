@@ -165,6 +165,7 @@ cd
 [[ ! -d /etc/VPS-MX/Slow ]] && mkdir /etc/VPS-MX/Slow
 [[ ! -d /etc/VPS-MX/Slow/install ]] && mkdir /etc/VPS-MX/Slow/install
 [[ ! -d /etc/VPS-MX/Slow/Key ]] && mkdir /etc/VPS-MX/Slow/Key
+msg -ama "               Finalizando Instalacion" && msg bar2
 atualiza_fun () { 
 fun_ip 
 SCPinstall="$HOME/install" 
