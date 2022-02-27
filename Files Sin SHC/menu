@@ -27,7 +27,8 @@ ram1=$(free -h | grep -i mem | awk {'print $2'})
 ram2=$(free -h | grep -i mem | awk {'print $4'}) 
 ram3=$(free -h | grep -i mem | awk {'print $3'}) 
 _ram=$(printf ' %-9s' "$(free -h | grep -i mem | awk {'print $2'})") 
-_usor=$(printf '%-8s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')") 
+_usor=$(printf '%-8s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')")
+dirapache="/usr/local/lib/ubuntn/apache/ver" && [[ ! -d ${dirapache} ]] && exit
 if [[ -e /etc/bash.bashrc-bakup ]]; then AutoRun="\033[1;32m[ON]" 
 elif [[ -e /etc/bash.bashrc ]]; then AutoRun="\033[1;31m[OFF]" 
 fi 
