@@ -139,7 +139,6 @@ exit 1
 } || { 
 v1=$(curl -sSL "https://raw.githubusercontent.com/phreaker56/VPSMX/master/SCRIPT-8.4/Vercion") 
 echo "$v1" > /etc/versin_script 
-echo "$v1" > /etc/versin_script_new 
 } 
 } 
 atualiza_fun () { 
