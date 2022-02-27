@@ -220,16 +220,16 @@ echo -e "\e[91m   INSTALACION SEMI MANUAL DE PAQUETES "
 echo -e "\e[91m(En caso de pedir confirmacion escoja: #y#) \e[0m" 
 echo "" 
 sleep 7s 
-apt-get update; apt-get upgrade -y 
-apt-get install curl -y 
-apt-get install lsof -y 
-apt-get install sudo -y 
-apt-get install figlet -y 
-apt-get install cowsay -y 
-apt-get install bc -y 
-apt-get install python -y 
-apt-get install at -y 
-apt-get install apache2 -y 
+apt update; apt upgrade -y 
+apt install curl -y 
+apt install lsof -y 
+apt install sudo -y 
+apt install figlet -y 
+apt install cowsay -y 
+apt install bc -y 
+apt install python -y 
+apt install at -y 
+apt install apache2 -y 
 sed -i "s;Listen 80;Listen 81;g" /etc/apache2/ports.conf 
 service apache2 restart 
 clear 
