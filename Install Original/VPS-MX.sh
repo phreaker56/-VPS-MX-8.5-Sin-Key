@@ -508,15 +508,6 @@ echo "${SCPdir}/menu" > /usr/bin/adm && chmod +x /usr/bin/adm
 echo "$Key" > ${SCPdir}/key.txt 
 [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}
 rm -rf /root/lista-arq
-[[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "es" > ${SCPidioma}
-echo -e "${cor[2]}               ACTUALIZACION COMPLETA " 
-echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL " 
-echo -e "  \033[1;41m phrk56 o menu\033[0;37m" && msg -bar2 
-rm -rf $HOME/lista-arq 
-else 
-invalid_key 
-fi 
-exit 1 
 echo -e "${cor[2]}         DESEAS INSTALAR NOTI-BOT?(Default n)" 
 echo -e "\033[1;34m  (Deves tener Telegram y el BOT: @LaCasitaMx_Noty_Bot)" 
 msg -bar2 
