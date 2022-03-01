@@ -193,7 +193,7 @@ local bot_retorno+="$LINE\n"
           bot_retorno+="- - 🔰 ACESSO DE ADMIN LIBERADO 🔰 - - \n"
           bot_retorno+="$LINE\n"
           bot_retorno+="✌️ Usted ya Puede usar el Bot\n"
-          bot_retorno+="👉 Dele Buen Uso\n"
+          bot_retorno+="👉 Dele Buen Uso Joven y Deje la Nopor\n"
 		  bot_retorno+="⚙️ Comando Principal: * /menu *\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -206,7 +206,7 @@ local bot_retorno+="$LINE\n"
           bot_retorno+="- - 🔰 ACESSO DE ADMIN LIBERADO 🔰 - - \n"
           bot_retorno+="$LINE\n"
           bot_retorno+="✌️ Usted ya Puede usar el Bot\n"
-          bot_retorno+="👉 Dele Buen Uso\n"
+          bot_retorno+="👉 Dele Buen Uso Joven y Deje la Nopor\n"
 		  bot_retorno+="⚙️ Comando Principal: * /menu *\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -298,7 +298,7 @@ demo3="$(less /etc/BOT-A/SSH-DEMO.log)"
 demor="$(echo $demo3)"
 
 local bot_retorno="*$LINE*\n"
-         bot_retorno+="*🔰 MANAGER VPS-MX 2.0 🔰*\n"
+         bot_retorno+="*🔰 MANAGER PHRK56-ADM 2.0 🔰*\n"
          bot_retorno+="$LINE\n"
 		 bot_retorno+="_▪️ SSH REGISTRADAS:_ ( *$SSH4* )\n"	
          bot_retorno+="_▪️ CONECTADOS:_ ( *$ONLINES* )\n"
@@ -459,7 +459,7 @@ local bot_retorno="$LINE\n"
      [[ -z "$4" ]] && error_fun && return 0
      if [[ -z $1 ]]; then
      error_fun 1 && return 0
-     elif [[ "${#1}" -lt "4" ]]; then
+     elif [[ "${#1}" -lt "2" ]]; then
      error_fun 2 && return 0
      elif [[ "${#1}" -gt "24" ]]; then
      error_fun 3 && return 0
@@ -468,7 +468,7 @@ local bot_retorno="$LINE\n"
      fi    
      if [[ -z $2 ]]; then
      error_fun 4 && return 0
-     elif [[ "${#2}" -lt "6" ]]; then
+     elif [[ "${#2}" -lt "2" ]]; then
      error_fun 5 && return 0
      elif [[ "${#2}" -gt "20" ]]; then
      error_fun 6 && return 0
@@ -477,7 +477,7 @@ local bot_retorno="$LINE\n"
      error_fun 7 && return 0
      elif [[ "$3" != +([0-9]) ]]; then
      error_fun 8 && return 0
-     elif [[ "$3" -gt "360" ]]; then
+     elif [[ "$3" -gt "365" ]]; then
      error_fun 9 && return 0
      fi
      if [[ -z "$4" ]]; then
